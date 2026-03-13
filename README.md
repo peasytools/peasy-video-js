@@ -1,6 +1,6 @@
-# peasy-video-js
+# peasy-video
 
-[![npm](https://img.shields.io/npm/v/peasy-video-js)](https://www.npmjs.com/package/peasy-video-js)
+[![npm](https://img.shields.io/npm/v/peasy-video)](https://www.npmjs.com/package/peasy-video)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -11,7 +11,7 @@ Built from [PeasyVideo](https://peasyvideo.com), a free online video toolkit wit
 > **Try the interactive tools at [peasyvideo.com](https://peasyvideo.com)** -- video trimming, resizing, audio extraction, GIF conversion, and thumbnail generation
 
 <p align="center">
-  <img src="demo.gif" alt="peasy-video-js demo — video info, thumbnail extraction, and format operations in Node.js" width="800">
+  <img src="demo.gif" alt="peasy-video demo — video info, thumbnail extraction, and format operations in Node.js" width="800">
 </p>
 
 ## Table of Contents
@@ -35,7 +35,7 @@ Built from [PeasyVideo](https://peasyvideo.com), a free online video toolkit wit
 
 ## Prerequisites
 
-peasy-video-js uses FFmpeg under the hood. Install it before using this library:
+peasy-video uses FFmpeg under the hood. Install it before using this library:
 
 | Platform | Command |
 |----------|---------|
@@ -47,13 +47,13 @@ peasy-video-js uses FFmpeg under the hood. Install it before using this library:
 ## Install
 
 ```bash
-npm install peasy-video-js
+npm install peasy-video
 ```
 
 ## Quick Start
 
 ```typescript
-import { info, trim, resize, thumbnail, videoToGif } from "peasy-video-js";
+import { info, trim, resize, thumbnail, videoToGif } from "peasy-video";
 
 // Get video metadata
 const meta = await info("movie.mp4");
@@ -79,7 +79,7 @@ const gif = await videoToGif("clip.mp4", { fps: 15, width: 480 });
 Extract comprehensive metadata from video files without decoding frames. FFprobe reads container headers and stream information to report resolution, frame rate, codec, bitrate, duration, and whether an audio track is present.
 
 ```typescript
-import { info } from "peasy-video-js";
+import { info } from "peasy-video";
 
 // Extract video metadata using FFprobe
 const meta = await info("presentation.mp4");
@@ -99,7 +99,7 @@ Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://pe
 Video trimming extracts a segment using keyframe-accurate seeking. Concatenation joins multiple clips sequentially using the FFmpeg concat demuxer, maintaining codec compatibility across segments.
 
 ```typescript
-import { trim, concatenate } from "peasy-video-js";
+import { trim, concatenate } from "peasy-video";
 
 // Extract a 30-second clip starting at 1 minute
 const clip = await trim("lecture.mp4", { start: 60, duration: 30 });
@@ -129,7 +129,7 @@ Video resizing scales frames to target dimensions while maintaining aspect ratio
 | 480p | 854 x 480 | SD |
 
 ```typescript
-import { resize, rotate } from "peasy-video-js";
+import { resize, rotate } from "peasy-video";
 
 // Resize to 720p (maintains aspect ratio)
 const hd = await resize("4k-video.mp4", { width: 1280, height: 720 });
@@ -151,7 +151,7 @@ Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://pe
 Extract the audio track from a video file as a standalone audio file, or strip the audio track entirely to produce a silent video. Audio extraction preserves the original codec when possible, avoiding re-encoding for faster processing.
 
 ```typescript
-import { extractAudio, stripAudio } from "peasy-video-js";
+import { extractAudio, stripAudio } from "peasy-video";
 
 // Extract audio as MP3
 const audio = await extractAudio("interview.mp4", "mp3");
@@ -170,7 +170,7 @@ Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://pe
 Extract individual frames as images for preview thumbnails, video galleries, or content analysis. Single-frame extraction uses precise seeking, while multi-frame extraction distributes captures evenly across the video duration.
 
 ```typescript
-import { thumbnail, thumbnails } from "peasy-video-js";
+import { thumbnail, thumbnails } from "peasy-video";
 
 // Extract a frame at 5 seconds as PNG
 const frame = await thumbnail("video.mp4", { time: 5 });
@@ -194,7 +194,7 @@ Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://pe
 Convert video clips to animated GIFs with palette optimization for smaller file sizes and better color reproduction. Convert GIFs back to MP4 for efficient playback and embedding.
 
 ```typescript
-import { videoToGif, gifToVideo } from "peasy-video-js";
+import { videoToGif, gifToVideo } from "peasy-video";
 
 // Convert video to GIF with custom settings
 const gif = await videoToGif("clip.mp4", {
@@ -215,7 +215,7 @@ Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://pe
 Adjust playback speed using FFmpeg's `setpts` (video) and `atempo` (audio) filters. Speed factors below 1.0 create slow motion, above 1.0 create fast motion. Reverse plays the video backwards, re-encoding all frames.
 
 ```typescript
-import { speed, reverseVideo } from "peasy-video-js";
+import { speed, reverseVideo } from "peasy-video";
 
 // Double the playback speed
 const fast = await speed("lecture.mp4", { factor: 2.0 });
@@ -242,7 +242,7 @@ import type {
   GifOptions,
   SpeedOptions,
   ThumbnailResult,
-} from "peasy-video-js";
+} from "peasy-video";
 
 // VideoFormat — "mp4" | "webm" | "mkv" | "avi" | "mov" | "gif"
 const format: VideoFormat = "mp4";
@@ -291,14 +291,14 @@ The Python package provides the same 13 video operations with CLI and moviepy en
 
 | Package | PyPI | npm | Description |
 |---------|------|-----|-------------|
-| peasy-pdf | [PyPI](https://pypi.org/project/peasy-pdf/) | [npm](https://www.npmjs.com/package/peasy-pdf-js) | PDF merge, split, compress, rotate, watermark |
-| peasy-image | [PyPI](https://pypi.org/project/peasy-image/) | [npm](https://www.npmjs.com/package/peasy-image-js) | Image resize, crop, compress, convert, watermark |
-| peasytext | [PyPI](https://pypi.org/project/peasytext/) | [npm](https://www.npmjs.com/package/peasytext-js) | Text analysis, case conversion, slugs, word count |
-| peasy-css | [PyPI](https://pypi.org/project/peasy-css/) | [npm](https://www.npmjs.com/package/peasy-css-js) | CSS gradients, shadows, flexbox, grid generators |
-| peasy-compress | [PyPI](https://pypi.org/project/peasy-compress/) | [npm](https://www.npmjs.com/package/peasy-compress-js) | ZIP, gzip, brotli, deflate compression |
-| peasy-document | [PyPI](https://pypi.org/project/peasy-document/) | [npm](https://www.npmjs.com/package/peasy-document-js) | Markdown, HTML, CSV, JSON, YAML conversion |
-| peasy-audio | [PyPI](https://pypi.org/project/peasy-audio/) | [npm](https://www.npmjs.com/package/peasy-audio-js) | Audio convert, trim, merge, normalize, effects |
-| **peasy-video** | [PyPI](https://pypi.org/project/peasy-video/) | **[npm](https://www.npmjs.com/package/peasy-video-js)** | **Video trim, resize, thumbnails, GIF conversion** |
+| peasy-pdf | [PyPI](https://pypi.org/project/peasy-pdf/) | [npm](https://www.npmjs.com/package/peasy-pdf) | PDF merge, split, compress, rotate, watermark |
+| peasy-image | [PyPI](https://pypi.org/project/peasy-image/) | [npm](https://www.npmjs.com/package/peasy-image) | Image resize, crop, compress, convert, watermark |
+| peasytext | [PyPI](https://pypi.org/project/peasytext/) | [npm](https://www.npmjs.com/package/peasytext) | Text analysis, case conversion, slugs, word count |
+| peasy-css | [PyPI](https://pypi.org/project/peasy-css/) | [npm](https://www.npmjs.com/package/peasy-css) | CSS gradients, shadows, flexbox, grid generators |
+| peasy-compress | [PyPI](https://pypi.org/project/peasy-compress/) | [npm](https://www.npmjs.com/package/peasy-compress) | ZIP, gzip, brotli, deflate compression |
+| peasy-document | [PyPI](https://pypi.org/project/peasy-document/) | [npm](https://www.npmjs.com/package/peasy-document) | Markdown, HTML, CSV, JSON, YAML conversion |
+| peasy-audio | [PyPI](https://pypi.org/project/peasy-audio/) | [npm](https://www.npmjs.com/package/peasy-audio) | Audio convert, trim, merge, normalize, effects |
+| **peasy-video** | [PyPI](https://pypi.org/project/peasy-video/) | **[npm](https://www.npmjs.com/package/peasy-video)** | **Video trim, resize, thumbnails, GIF conversion** |
 
 Part of the [Peasy](https://peasytools.com) developer tools ecosystem.
 
