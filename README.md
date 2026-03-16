@@ -1,6 +1,6 @@
 # peasy-video
 
-[![npm](https://img.shields.io/npm/v/peasy-video)](https://www.npmjs.com/package/peasy-video)
+[![npm version](https://agentgif.com/badge/npm/peasy-video/version.svg)](https://www.npmjs.com/package/peasy-video)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
