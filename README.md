@@ -3,6 +3,7 @@
 [![npm version](https://agentgif.com/badge/npm/peasy-video/version.svg)](https://www.npmjs.com/package/peasy-video)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://agentgif.com/badge/github/peasytools/peasy-video-js/stars.svg)](https://github.com/peasytools/peasy-video-js)
 
 Video processing library for Node.js -- trim, resize, rotate, extract audio, generate thumbnails, convert to GIF, concatenate clips, adjust speed, and reverse video. FFmpeg-powered, TypeScript-first with full type safety. Handles MP4, WebM, MKV, AVI, MOV, and any container format supported by FFmpeg.
 
