@@ -29,7 +29,9 @@ Built from [PeasyVideo](https://peasyvideo.com), a free online video toolkit wit
   - [Speed & Reverse](#speed--reverse)
 - [TypeScript Types](#typescript-types)
 - [API Reference](#api-reference)
-- [Also Available for Python](#also-available-for-python)
+- [REST API Client](#rest-api-client)
+- [Learn More](#learn-more)
+- [Also Available](#also-available)
 - [Peasy Developer Tools](#peasy-developer-tools)
 - [License](#license)
 
@@ -279,28 +281,69 @@ const meta: VideoInfo = {
 | `reverseVideo(input)` | Play video in reverse |
 | `speed(input, options)` | Adjust playback speed (0.5x to 4.0x) |
 
-## Also Available for Python
+## REST API Client
 
-```bash
-pip install peasy-video
+The API client connects to the [PeasyVideo developer API](https://peasyvideo.com/developers/) for tool discovery and content.
+
+```typescript
+import { PeasyVideoClient } from "peasy-video";
+
+const client = new PeasyVideoClient();
+
+// List available tools
+const tools = await client.listTools();
+console.log(tools.results);
+
+// Search across all content
+const results = await client.search("trim");
+console.log(results);
+
+// Browse the glossary
+const glossary = await client.listGlossary({ search: "format" });
+for (const term of glossary.results) {
+  console.log(`${term.term}: ${term.definition}`);
+}
+
+// Discover guides
+const guides = await client.listGuides({ category: "video" });
+for (const guide of guides.results) {
+  console.log(`${guide.title} (${guide.audience_level})`);
+}
 ```
 
-The Python package provides the same 13 video operations with CLI and moviepy engine. See [peasy-video on PyPI](https://pypi.org/project/peasy-video/).
+Full API documentation at [peasyvideo.com/developers/](https://peasyvideo.com/developers/).
+
+## Learn More
+
+- **Tools**: [Video Trim](https://peasyvideo.com/tools/video-trim/) · [Video Resize](https://peasyvideo.com/tools/video-resize/) · [Video to GIF](https://peasyvideo.com/tools/video-to-gif/) · [All Tools](https://peasyvideo.com/)
+- **Guides**: [Video Trimming Guide](https://peasyvideo.com/guides/trim/) · [All Guides](https://peasyvideo.com/guides/)
+- **Glossary**: [MP4](https://peasyvideo.com/glossary/mp4/) · [WebM](https://peasyvideo.com/glossary/webm/) · [All Terms](https://peasyvideo.com/glossary/)
+- **Formats**: [MP4](https://peasyvideo.com/formats/mp4/) · [WebM](https://peasyvideo.com/formats/webm/) · [All Formats](https://peasyvideo.com/formats/)
+- **API**: [REST API Docs](https://peasyvideo.com/developers/) · [OpenAPI Spec](https://peasyvideo.com/api/openapi.json)
+
+## Also Available
+
+| Language | Package | Install |
+|----------|---------|---------|
+| **Python** | [peasy-video](https://pypi.org/project/peasy-video/) | `pip install "peasy-video[all]"` |
+| **Go** | [peasy-video-go](https://pkg.go.dev/github.com/peasytools/peasy-video-go) | `go get github.com/peasytools/peasy-video-go` |
+| **Rust** | [peasy-video](https://crates.io/crates/peasy-video) | `cargo add peasy-video` |
+| **Ruby** | [peasy-video](https://rubygems.org/gems/peasy-video) | `gem install peasy-video` |
 
 ## Peasy Developer Tools
 
+Part of the [Peasy Tools](https://peasytools.com) open-source developer ecosystem.
+
 | Package | PyPI | npm | Description |
 |---------|------|-----|-------------|
-| peasy-pdf | [PyPI](https://pypi.org/project/peasy-pdf/) | [npm](https://www.npmjs.com/package/peasy-pdf) | PDF merge, split, compress, rotate, watermark |
-| peasy-image | [PyPI](https://pypi.org/project/peasy-image/) | [npm](https://www.npmjs.com/package/peasy-image) | Image resize, crop, compress, convert, watermark |
-| peasytext | [PyPI](https://pypi.org/project/peasytext/) | [npm](https://www.npmjs.com/package/peasytext) | Text analysis, case conversion, slugs, word count |
-| peasy-css | [PyPI](https://pypi.org/project/peasy-css/) | [npm](https://www.npmjs.com/package/peasy-css) | CSS gradients, shadows, flexbox, grid generators |
-| peasy-compress | [PyPI](https://pypi.org/project/peasy-compress/) | [npm](https://www.npmjs.com/package/peasy-compress) | ZIP, gzip, brotli, deflate compression |
-| peasy-document | [PyPI](https://pypi.org/project/peasy-document/) | [npm](https://www.npmjs.com/package/peasy-document) | Markdown, HTML, CSV, JSON, YAML conversion |
-| peasy-audio | [PyPI](https://pypi.org/project/peasy-audio/) | [npm](https://www.npmjs.com/package/peasy-audio) | Audio convert, trim, merge, normalize, effects |
-| **peasy-video** | [PyPI](https://pypi.org/project/peasy-video/) | **[npm](https://www.npmjs.com/package/peasy-video)** | **Video trim, resize, thumbnails, GIF conversion** |
-
-Part of the [Peasy](https://peasytools.com) developer tools ecosystem.
+| peasy-pdf | [PyPI](https://pypi.org/project/peasy-pdf/) | [npm](https://www.npmjs.com/package/peasy-pdf) | PDF merge, split, rotate, compress, 21 operations — [peasypdf.com](https://peasypdf.com) |
+| peasy-image | [PyPI](https://pypi.org/project/peasy-image/) | [npm](https://www.npmjs.com/package/peasy-image) | Image resize, crop, convert, compress — [peasyimage.com](https://peasyimage.com) |
+| peasy-audio | [PyPI](https://pypi.org/project/peasy-audio/) | [npm](https://www.npmjs.com/package/peasy-audio) | Audio trim, merge, convert, normalize — [peasyaudio.com](https://peasyaudio.com) |
+| **peasy-video** | **[PyPI](https://pypi.org/project/peasy-video/)** | **[npm](https://www.npmjs.com/package/peasy-video)** | **Video trim, resize, thumbnails, GIF — [peasyvideo.com](https://peasyvideo.com)** |
+| peasy-css | [PyPI](https://pypi.org/project/peasy-css/) | [npm](https://www.npmjs.com/package/peasy-css) | CSS minify, format, analyze — [peasycss.com](https://peasycss.com) |
+| peasy-compress | [PyPI](https://pypi.org/project/peasy-compress/) | [npm](https://www.npmjs.com/package/peasy-compress) | ZIP, TAR, gzip compression — [peasytools.com](https://peasytools.com) |
+| peasy-document | [PyPI](https://pypi.org/project/peasy-document/) | [npm](https://www.npmjs.com/package/peasy-document) | Markdown, HTML, CSV, JSON conversion — [peasyformats.com](https://peasyformats.com) |
+| peasytext | [PyPI](https://pypi.org/project/peasytext/) | [npm](https://www.npmjs.com/package/peasytext) | Text case conversion, slugify, word count — [peasytext.com](https://peasytext.com) |
 
 ## License
 
