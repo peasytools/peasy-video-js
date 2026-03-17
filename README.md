@@ -94,7 +94,7 @@ console.log(meta.hasAudio);  // true
 console.log(meta.bitrate);   // 5000000
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [Video Metadata & EXIF Data Explained](https://peasyvideo.com/guides/video-metadata-exif-data-explained/) · [What is Bitrate?](https://peasyvideo.com/glossary/bitrate-video/) · [What is a Keyframe?](https://peasyvideo.com/glossary/keyframe/)
 
 ### Trimming & Concatenation
 
@@ -117,7 +117,7 @@ const combined = await concatenate([
 ]);
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [How to Trim & Cut Video in Browser](https://peasyvideo.com/guides/how-to-trim-cut-video-browser/) · [What is Trimming?](https://peasyvideo.com/glossary/trimming/) · [What is GOP?](https://peasyvideo.com/glossary/gop/)
 
 ### Resize & Transform
 
@@ -146,7 +146,7 @@ const rotated = await rotate("portrait.mp4", { degrees: 90 });
 const flipped = await rotate("upside-down.mp4", { degrees: 180 });
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [Video Aspect Ratios & Resolution Guide](https://peasyvideo.com/guides/video-aspect-ratios-resolution-guide/) · [Social Media Video Specs](https://peasyvideo.com/guides/social-media-video-specs/) · [What is Letterboxing?](https://peasyvideo.com/glossary/letterboxing/)
 
 ### Audio Extraction
 
@@ -165,7 +165,7 @@ const wav = await extractAudio("concert.mp4", "wav");
 const silent = await stripAudio("presentation.mp4");
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [How to Extract Audio from Video](https://peasyvideo.com/guides/how-to-extract-audio-from-video/) · [What is Transcoding?](https://peasyvideo.com/glossary/transcoding/) · [What is a Container Format?](https://peasyvideo.com/glossary/container-format/)
 
 ### Thumbnails
 
@@ -189,7 +189,7 @@ const frames = await thumbnails("video.mp4", 10, { width: 320 });
 // Returns array of paths: ["/tmp/peasy-video-xxx-0.png", ...]
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [Video Thumbnails Best Practices](https://peasyvideo.com/guides/video-thumbnails-best-practices/) · [Video Thumbnail Extraction Techniques](https://peasyvideo.com/guides/video-thumbnail-extraction-techniques/) · [What is Frame Rate?](https://peasyvideo.com/glossary/frame-rate/)
 
 ### GIF Conversion
 
@@ -210,7 +210,7 @@ const gif = await videoToGif("clip.mp4", {
 const mp4 = await gifToVideo("animation.gif");
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [GIF Creation & Optimization Guide](https://peasyvideo.com/guides/gif-creation-optimization-guide/) · [How to Create Animated GIFs from Video](https://peasyvideo.com/guides/how-to-create-animated-gifs-from-video/) · [Creating Seamless Video Loops](https://peasyvideo.com/guides/creating-seamless-video-loops/)
 
 ### Speed & Reverse
 
@@ -229,7 +229,7 @@ const slow = await speed("action.mp4", { factor: 0.5 });
 const reversed = await reverseVideo("clip.mp4");
 ```
 
-Learn more: [Peasy Video Tools](https://peasyvideo.com) · [Glossary](https://peasytools.com/glossary/)
+Learn more: [Video Codecs Explained](https://peasyvideo.com/guides/video-codecs-explained/) · [What is Motion Estimation?](https://peasyvideo.com/glossary/motion-estimation/) · [What is Optical Flow?](https://peasyvideo.com/glossary/optical-flow/)
 
 ## TypeScript Types
 
@@ -315,10 +315,10 @@ Full API documentation at [peasyvideo.com/developers/](https://peasyvideo.com/de
 
 ## Learn More
 
-- **Tools**: [Video Resolution Calculator](https://peasyvideo.com/video/video-resolution/) · [Video Bitrate Calculator](https://peasyvideo.com/video/video-bitrate/) · [Video Framerate Converter](https://peasyvideo.com/video/video-framerate/) · [All Tools](https://peasyvideo.com/)
-- **Guides**: [Video Codecs Explained](https://peasyvideo.com/guides/video-codecs-explained/) · [Video Compression for Web](https://peasyvideo.com/guides/video-compression-web-delivery/) · [All Guides](https://peasyvideo.com/guides/)
-- **Glossary**: [AV1](https://peasyvideo.com/glossary/av1/) · [Frame Rate](https://peasyvideo.com/glossary/frame-rate/) · [Color Grading](https://peasyvideo.com/glossary/color-grading/) · [All Terms](https://peasyvideo.com/glossary/)
-- **Formats**: [MP4](https://peasyvideo.com/formats/mp4/) · [WebM](https://peasyvideo.com/formats/webm/) · [All Formats](https://peasyvideo.com/formats/)
+- **Tools**: [Video Resolution Calculator](https://peasyvideo.com/video/video-resolution/) · [Video Bitrate Calculator](https://peasyvideo.com/video/video-bitrate/) · [Video Framerate Converter](https://peasyvideo.com/video/video-framerate/) · [Video Aspect Ratio Calculator](https://peasyvideo.com/video/video-aspect-ratio/) · [Video File Size Calculator](https://peasyvideo.com/video/video-filesize/) · [Video Codec Analyzer](https://peasyvideo.com/video/video-codec/) · [All Video Tools](https://peasyvideo.com/)
+- **Guides**: [Video Codecs Explained](https://peasyvideo.com/guides/video-codecs-explained/) · [Video Compression for Web Delivery](https://peasyvideo.com/guides/video-compression-web-delivery/) · [GIF Creation & Optimization Guide](https://peasyvideo.com/guides/gif-creation-optimization-guide/) · [H.264 vs H.265 vs AV1 Comparison](https://peasyvideo.com/guides/h264-vs-h265-vs-av1-comparison/) · [Video Thumbnails Best Practices](https://peasyvideo.com/guides/video-thumbnails-best-practices/) · [Social Media Video Specs](https://peasyvideo.com/guides/social-media-video-specs/) · [Frame Rate Guide: 24, 30, 60 fps](https://peasyvideo.com/guides/frame-rate-guide-24-30-60-fps/) · [All Guides](https://peasyvideo.com/guides/)
+- **Glossary**: [H.264](https://peasyvideo.com/glossary/h264/) · [H.265](https://peasyvideo.com/glossary/h265/) · [AV1](https://peasyvideo.com/glossary/av1/) · [Frame Rate](https://peasyvideo.com/glossary/frame-rate/) · [Container Format](https://peasyvideo.com/glossary/container-format/) · [Keyframe](https://peasyvideo.com/glossary/keyframe/) · [Transcoding](https://peasyvideo.com/glossary/transcoding/) · [Color Grading](https://peasyvideo.com/glossary/color-grading/) · [All Terms](https://peasyvideo.com/glossary/)
+- **Formats**: [MP4](https://peasyvideo.com/formats/mp4/) · [WebM](https://peasyvideo.com/formats/webm/) · [MKV](https://peasyvideo.com/formats/mkv/) · [AVI](https://peasyvideo.com/formats/avi/) · [MOV](https://peasyvideo.com/formats/mov/) · [GIF](https://peasyvideo.com/formats/gif/) · [All Formats](https://peasyvideo.com/formats/)
 - **API**: [REST API Docs](https://peasyvideo.com/developers/) · [OpenAPI Spec](https://peasyvideo.com/api/openapi.json)
 
 ## Also Available
