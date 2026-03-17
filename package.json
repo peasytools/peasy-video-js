@@ -1,6 +1,6 @@
 {
   "name": "peasy-video",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Video processing library for Node.js \u2014 trim, resize, rotate, thumbnails, GIF conversion. FFmpeg-powered, TypeScript-first.",
   "type": "module",
   "main": "dist/index.js",
