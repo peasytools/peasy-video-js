@@ -201,7 +201,91 @@ function speed(input, options) {
   cmd.audioFilter(atempoFilters.join(","));
   return run(cmd, output);
 }
+
+// src/client.ts
+var PeasyVideo = class {
+  baseUrl;
+  constructor(baseUrl = "https://peasyvideo.com") {
+    this.baseUrl = baseUrl.replace(/\/+$/, "");
+  }
+  async get(path, params) {
+    const url = new URL(path, this.baseUrl);
+    if (params) {
+      for (const [k, v] of Object.entries(params)) {
+        if (v !== void 0 && v !== null) url.searchParams.set(k, String(v));
+      }
+    }
+    const res = await fetch(url.toString());
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`PeasyVideo API error: HTTP ${res.status} \u2014 ${body}`);
+    }
+    return res.json();
+  }
+  /** List tools (paginated). Filter by category or search query. */
+  async listTools(opts) {
+    return this.get("/api/v1/tools/", opts);
+  }
+  /** Get a single tool by slug. */
+  async getTool(slug) {
+    return this.get(`/api/v1/tools/${encodeURIComponent(slug)}/`);
+  }
+  /** List tool categories (paginated). */
+  async listCategories(opts) {
+    return this.get("/api/v1/categories/", opts);
+  }
+  /** List file formats (paginated). */
+  async listFormats(opts) {
+    return this.get("/api/v1/formats/", opts);
+  }
+  /** Get a single format by slug. */
+  async getFormat(slug) {
+    return this.get(`/api/v1/formats/${encodeURIComponent(slug)}/`);
+  }
+  /** List format conversions (paginated). */
+  async listConversions(opts) {
+    return this.get("/api/v1/conversions/", opts);
+  }
+  /** List glossary terms (paginated). Search with opts.search. */
+  async listGlossary(opts) {
+    return this.get("/api/v1/glossary/", opts);
+  }
+  /** Get a single glossary term by slug. */
+  async getGlossaryTerm(slug) {
+    return this.get(`/api/v1/glossary/${encodeURIComponent(slug)}/`);
+  }
+  /** List guides (paginated). Filter by category, audience level, or search. */
+  async listGuides(opts) {
+    const params = { ...opts };
+    if (opts?.audienceLevel) {
+      params.audience_level = opts.audienceLevel;
+      delete params.audienceLevel;
+    }
+    return this.get("/api/v1/guides/", params);
+  }
+  /** Get a single guide by slug. */
+  async getGuide(slug) {
+    return this.get(`/api/v1/guides/${encodeURIComponent(slug)}/`);
+  }
+  /** List industry use cases (paginated). */
+  async listUseCases(opts) {
+    return this.get("/api/v1/use-cases/", opts);
+  }
+  /** Search across tools, formats, and glossary. */
+  async search(query, limit) {
+    return this.get("/api/v1/search/", { q: query, limit });
+  }
+  /** List all Peasy sites. */
+  async listSites() {
+    return this.get("/api/v1/sites/");
+  }
+  /** Get the OpenAPI 3.0.3 specification. */
+  async openapiSpec() {
+    return this.get("/api/openapi.json");
+  }
+};
 export {
+  PeasyVideo,
   concatenate,
   extractAudio,
   gifToVideo,

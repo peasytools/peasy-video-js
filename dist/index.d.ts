@@ -261,4 +261,133 @@ declare function reverseVideo(input: string): Promise<string>;
  */
 declare function speed(input: string, options: SpeedOptions): Promise<string>;
 
-export { type GifOptions, type ResizeOptions, type RotateOptions, type SpeedOptions, type ThumbnailOptions, type ThumbnailResult, type TrimOptions, type VideoFormat, type VideoInfo, concatenate, extractAudio, gifToVideo, info, resize, reverseVideo, rotate, speed, stripAudio, thumbnail, thumbnails, trim, videoToGif };
+/** Options for paginated list requests. */
+interface ListOptions {
+    page?: number;
+    limit?: number;
+    category?: string;
+    search?: string;
+}
+/** Options for list_guides with audience_level. */
+interface ListGuidesOptions extends ListOptions {
+    audienceLevel?: string;
+}
+/** Options for list_conversions with source/target. */
+interface ListConversionsOptions extends Omit<ListOptions, "category" | "search"> {
+    source?: string;
+    target?: string;
+}
+/** DRF paginated response. */
+interface PaginatedResponse<T> {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: T[];
+}
+/** A Peasy tool. */
+interface Tool {
+    slug: string;
+    name: string;
+    description: string;
+    category: string;
+    url: string;
+}
+/** A tool category. */
+interface Category {
+    slug: string;
+    name: string;
+    description: string;
+    tool_count: number;
+}
+/** A file format. */
+interface Format {
+    slug: string;
+    name: string;
+    extension: string;
+    mime_type: string;
+    category: string;
+    description: string;
+}
+/** A format conversion. */
+interface Conversion {
+    source: string;
+    target: string;
+    description: string;
+    tool_slug: string;
+}
+/** A glossary term. */
+interface GlossaryTerm {
+    slug: string;
+    term: string;
+    definition: string;
+    category: string;
+}
+/** A how-to guide. */
+interface Guide {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    audience_level: string;
+    word_count: number;
+}
+/** An industry use case. */
+interface UseCase {
+    slug: string;
+    title: string;
+    industry: string;
+}
+/** A Peasy site. */
+interface Site {
+    name: string;
+    domain: string;
+    url: string;
+}
+/** Cross-model search result. */
+interface SearchResult {
+    query: string;
+    results: {
+        tools: Tool[];
+        formats: Format[];
+        glossary: GlossaryTerm[];
+    };
+}
+
+/** PeasyVideo API client. Zero dependencies — uses native fetch. */
+declare class PeasyVideo {
+    private baseUrl;
+    constructor(baseUrl?: string);
+    private get;
+    /** List tools (paginated). Filter by category or search query. */
+    listTools(opts?: ListOptions): Promise<PaginatedResponse<Tool>>;
+    /** Get a single tool by slug. */
+    getTool(slug: string): Promise<Tool>;
+    /** List tool categories (paginated). */
+    listCategories(opts?: Pick<ListOptions, "page" | "limit">): Promise<PaginatedResponse<Category>>;
+    /** List file formats (paginated). */
+    listFormats(opts?: ListOptions): Promise<PaginatedResponse<Format>>;
+    /** Get a single format by slug. */
+    getFormat(slug: string): Promise<Format>;
+    /** List format conversions (paginated). */
+    listConversions(opts?: ListConversionsOptions): Promise<PaginatedResponse<Conversion>>;
+    /** List glossary terms (paginated). Search with opts.search. */
+    listGlossary(opts?: ListOptions): Promise<PaginatedResponse<GlossaryTerm>>;
+    /** Get a single glossary term by slug. */
+    getGlossaryTerm(slug: string): Promise<GlossaryTerm>;
+    /** List guides (paginated). Filter by category, audience level, or search. */
+    listGuides(opts?: ListGuidesOptions): Promise<PaginatedResponse<Guide>>;
+    /** Get a single guide by slug. */
+    getGuide(slug: string): Promise<Guide>;
+    /** List industry use cases (paginated). */
+    listUseCases(opts?: ListOptions & {
+        industry?: string;
+    }): Promise<PaginatedResponse<UseCase>>;
+    /** Search across tools, formats, and glossary. */
+    search(query: string, limit?: number): Promise<SearchResult>;
+    /** List all Peasy sites. */
+    listSites(): Promise<PaginatedResponse<Site>>;
+    /** Get the OpenAPI 3.0.3 specification. */
+    openapiSpec(): Promise<Record<string, unknown>>;
+}
+
+export { type Category, type Conversion, type Format, type GifOptions, type GlossaryTerm, type Guide, type ListConversionsOptions, type ListGuidesOptions, type ListOptions, type PaginatedResponse, PeasyVideo, type ResizeOptions, type RotateOptions, type SearchResult, type Site, type SpeedOptions, type ThumbnailOptions, type ThumbnailResult, type Tool, type TrimOptions, type UseCase, type VideoFormat, type VideoInfo, concatenate, extractAudio, gifToVideo, info, resize, reverseVideo, rotate, speed, stripAudio, thumbnail, thumbnails, trim, videoToGif };
