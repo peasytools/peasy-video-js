@@ -12,7 +12,7 @@ Built from [PeasyVideo](https://peasyvideo.com), a free online video toolkit wit
 > **Try the interactive tools at [peasyvideo.com](https://peasyvideo.com)** -- video trimming, resizing, audio extraction, GIF conversion, and thumbnail generation
 
 <p align="center">
-  <img src="demo.gif" alt="peasy-video demo — video info, thumbnail extraction, and format operations in Node.js" width="800">
+  <a href="https://agentgif.com/tpsD7KFs"><img src="https://media.agentgif.com/tpsD7KFs.gif" alt="peasy-video demo — video info, thumbnail extraction, and format operations in Node.js" width="800"></a>
 </p>
 
 ## Table of Contents
